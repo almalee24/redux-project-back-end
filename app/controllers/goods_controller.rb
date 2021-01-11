@@ -45,6 +45,7 @@ class GoodsController < ApplicationController
       @good = Good.find(params[:id])
     end
 
+
     # Only allow a trusted parameter "white list" through.
     def good_params
       params.require(:good).permit(:name, :weight, :price)
