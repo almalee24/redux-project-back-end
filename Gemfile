@@ -7,7 +7,7 @@ ruby '2.6.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'pg'
-
+gem 'pry'
 
 gem 'active_model_serializers'
 # Use Puma as the app server
