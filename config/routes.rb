@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :orders
   resources :order_items
+  post '/orders/neworder', to: 'orders#new_order'
   post '/login', to: 'sessions#create'
   post '/signup', to: 'users#create'
   delete '/logout', to: 'sessions#destroy'
