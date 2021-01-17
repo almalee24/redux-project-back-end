@@ -8,6 +8,8 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'pg'
 gem 'pry'
+gem 'fast_jsonapi'
+gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers'
 # Use Puma as the app server

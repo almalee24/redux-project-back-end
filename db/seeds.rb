@@ -40,3 +40,8 @@ Good.create(
     company_id: 5
 )
 
+User.create(
+    name: "almalee",
+    username: 'almalee',
+    password: 'almalee'
+)
