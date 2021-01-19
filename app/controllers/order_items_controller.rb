@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
   def create
+    binding.pry
     order = Order.find(order_item_params[:order_id])
     order_items = order.order_items
 

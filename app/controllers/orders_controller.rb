@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  def neworder
+  def new_order
+    binding.pry
     product_1 = Good.find(order_params[:good_id])
     quantity_1 = order_params[:quantity]
 
