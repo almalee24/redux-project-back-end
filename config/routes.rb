@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :orders
-  resources :order_items
   post '/orders/neworder', to: 'orders#new_order'
   post '/login', to: 'sessions#create'
   post '/signup', to: 'users#create'
@@ -11,6 +9,10 @@ Rails.application.routes.draw do
   post '/add_cart', to: 'order_items#create'
   
   resources :users
+
+  resources :orders
+  resources :order_items
+  
   resources :companies do 
     resources :goods
   end
