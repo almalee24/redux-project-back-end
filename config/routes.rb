@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :company_orders
   post '/orders/neworder', to: 'orders#new_order'
   post '/login', to: 'sessions#create'
   post '/signup', to: 'users#create'

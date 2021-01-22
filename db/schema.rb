@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_093936) do
+ActiveRecord::Schema.define(version: 2021_01_22_225451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 2021_01_21_093936) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_logo"
     t.string "image_background"
+  end
+
+  create_table "company_orders", force: :cascade do |t|
+    t.string "order_type", null: false
+    t.bigint "order_id", null: false
+    t.string "user_type", null: false
+    t.bigint "user_id", null: false
+    t.string "company_type", null: false
+    t.bigint "company_id", null: false
+    t.string "company_logo"
+    t.string "company_name"
+    t.decimal "company_total", precision: 9, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_type", "company_id"], name: "index_company_orders_on_company_type_and_company_id"
+    t.index ["order_type", "order_id"], name: "index_company_orders_on_order_type_and_order_id"
+    t.index ["user_type", "user_id"], name: "index_company_orders_on_user_type_and_user_id"
   end
 
   create_table "goods", force: :cascade do |t|

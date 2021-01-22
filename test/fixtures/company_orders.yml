@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order: one
+  order_type: Order
+  user: one
+  user_type: User
+  company: one
+  company_type: Company
+  company_logo: MyString
+  company_name: MyString
+  company_total: 9.99
+
+two:
+  order: two
+  order_type: Order
+  user: two
+  user_type: User
+  company: two
+  company_type: Company
+  company_logo: MyString
+  company_name: MyString
+  company_total: 9.99
