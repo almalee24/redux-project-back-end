@@ -16,9 +16,10 @@ class GoodsController < ApplicationController
   # POST /goods
   def create
     @good = Good.new(good_params)
-
+    binding.pry
     if @good.save
-      render json: @good, status: :created, location: @good
+      binding.pry
+      render json: @good
     else
       render json: @good.errors, status: :unprocessable_entity
     end
@@ -48,6 +49,6 @@ class GoodsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def good_params
-      params.require(:good).permit(:name, :weight, :price, :image)
+      params.require(:good).permit(:name, :weight, :price, :image, :image_two, :image_three, :description, :sale, :company_id)
     end
 end
