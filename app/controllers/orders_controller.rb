@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def new_order
+    user = User.find_by_id(params[:user_id])
     
     company = Company.find_by_id(params[:company_id])
     company_logo = company.image_logo
@@ -21,25 +22,28 @@ class OrdersController < ApplicationController
     product_image = product.image
     quantity = params[:quantity]
 
-    order = Order.create(user_id: params[:user_id] )
+    order = Order.create(user_id: user.id)
   
-    order_items = OrderItem.create(order_id: order.id, good_id: product.id, quantity: quantity, unit_price: product.price, total: quantity * product.price, company_id: company.id, good_name: product_name, good_weight: product_weight, good_image: product_image, company_name: company_name, company_logo: company_logo)
+    company_order = CompanyOrder.create(company_logo: company_logo, company_name: company_name, company_name: company_name, order_id: order.id)
+    order_items = OrderItem.create(company_order_id: compay_order.id, good_id: product.id, quantity: quantity, unit_price: product.price, total: quantity * product.price, good_name: product_name, good_weight: product_weight, good_image: product_image)
    
-    user = User.find_by_id(params[:user_id])
+    
     user.update(current_order: order.id)
-    order_items = order.order_items
+    order_items = company_order.order_items
     
 
     total = 0
     total_quantity = 0
 
-    order.order_items.each{ |item| total += item.unit_price}
-    order.total = total
+    company_order.order_items.each{ |item| total += item.unit_price}
+    company_order.company_total = total
+    order.total = total 
 
-    order.order_items.each { |item| total_quantity += item.quantity}
+    company_order.order_items.each { |item| total_quantity += item.quantity}
+    company_order.total_quantity = total_quantity
     order.total_qty = total_quantity
 
-    order.save
+    company_order.save
 
    binding.pry
     render json: user

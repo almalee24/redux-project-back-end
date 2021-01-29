@@ -9,12 +9,17 @@ class CompanyOrdersController < ApplicationController
   end
 
   # GET /company_orders/1
-  def show
-    render json: @company_order
-  end
+  # def show
+  #   render json: @company_order
+  # end
 
   # POST /company_orders
   def create
+    company = Company.find_by_id(params[:company_id])
+    company_logo = company.image_logo
+    company_name = company.name 
+
+    
     @company_order = CompanyOrder.new(company_order_params)
 
     if @company_order.save

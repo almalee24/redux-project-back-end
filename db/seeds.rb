@@ -60,5 +60,6 @@ Good.create(
 User.create(
     name: "almalee",
     username: 'almalee',
-    password: 'almalee'
+    password: 'almalee',
+    admin: true 
 )
